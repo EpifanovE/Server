@@ -21,7 +21,7 @@ sudo apt-get update && sudo apt-get install -y yarn
 
 sudo add-apt-repository ppa:ondrej/php
 sudo apt-get update
-sudo apt-get install -y php7.4 php7.4-common php7.4-cli php7.4-fpm php7.4-xdebug php7.4-mysql php7.4-mbstring php7.4-xml php7.4-zip php7.4-gd
+sudo apt-get install -y php7.4 php7.4-common php7.4-cli php7.4-fpm php7.4-xdebug php7.4-mysql php7.4-mbstring php7.4-xml php7.4-zip php7.4-gd php7.4-sqlite
 
 
 # OCMS START
@@ -49,6 +49,7 @@ sudo rm /etc/nginx/sites-enabled/default
 sudo rm /etc/nginx/sites-available/default
 
 sudo sed -i "s/;cgi.fix_pathinfo=1/cgi.fixpathinfo=0/" /etc/php/7.4/fpm/php.ini
+sudo sed -i "s/;extension=pdo_sqlite/extension=pdo_sqlite/" /etc/php/7.4/fpm/php.ini
 sudo echo "xdebug.show_error_trace = 1" >> /etc/php/7.4/mods-available/xdebug.ini
 sudo echo "xdebug.remote_enable = 1" >> /etc/php/7.4/mods-available/xdebug.ini
 sudo echo "xdebug.remote_connect_back = 1" >> /etc/php/7.4/mods-available/xdebug.ini
